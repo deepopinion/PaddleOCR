@@ -20,8 +20,11 @@ from shapely.geometry import Polygon
 
 from ppocr.data.imaug.iaa_augment import IaaAugment
 from ppocr.data.imaug.random_crop_data import is_poly_outside_rect
-from tools.infer.utility import get_rotate_crop_image
 
+try:
+    from tools.infer.utility import get_rotate_crop_image
+except:
+    from paddleocr.tools.infer.utility import get_rotate_crop_image
 
 class CopyPaste(object):
     def __init__(self, objects_paste_ratio=0.2, limit_paste=True, **kwargs):
@@ -60,7 +63,7 @@ class CopyPaste(object):
 
             src_img, box = self.paste_img(src_img, box_img, src_polys)
             if box is not None:
-                box = box.tolist() 
+                box = box.tolist()
                 for _ in range(len(box), point_num):
                     box.append(box[-1])
                 src_polys.append(box)

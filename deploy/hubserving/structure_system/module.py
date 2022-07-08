@@ -29,7 +29,11 @@ import cv2
 import numpy as np
 import paddlehub as hub
 
-from tools.infer.utility import base64_to_cv2
+try:
+    from tools.infer.utility import base64_to_cv2
+except:
+    from paddleocr.tools.infer.utility import base64_to_cv2
+
 from ppstructure.predict_system import StructureSystem as PPStructureSystem
 from ppstructure.predict_system import save_structure_res
 from ppstructure.utility import parse_args

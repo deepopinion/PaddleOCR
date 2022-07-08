@@ -26,7 +26,11 @@ import time
 import sys
 from scipy.spatial import distance as dist
 
-import tools.infer.utility as utility
+try:
+    import tools.infer.utility as utility
+except:
+    import paddleocr.tools.infer.utility as utility
+
 from ppocr.utils.logging import get_logger
 from ppocr.utils.utility import get_image_file_list, check_and_read_gif
 from ppocr.data import create_operators, transform

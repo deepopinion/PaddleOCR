@@ -38,9 +38,12 @@ from ppocr.utils.save_load import load_model
 from ppocr.utils.visual import draw_re_results
 from ppocr.utils.logging import get_logger
 from ppocr.utils.utility import get_image_file_list, load_vqa_bio_label_maps, print_dict
-from tools.program import ArgsParser, load_config, merge_config, check_gpu
-from tools.infer_vqa_token_ser import SerPredictor
-
+try:
+    from tools.program import ArgsParser, load_config, merge_config, check_gpu
+    from tools.infer_vqa_token_ser import SerPredictor
+except:
+    from paddleocr.tools.program import ArgsParser, load_config, merge_config, check_gpu
+    from paddleocr.tools.infer_vqa_token_ser import SerPredictor
 
 class ReArgsParser(ArgsParser):
     def __init__(self):
@@ -115,7 +118,7 @@ class SerRePredictor(object):
     def __init__(self, config, ser_config):
         self.ser_engine = SerPredictor(ser_config)
 
-        #  init re model 
+        #  init re model
         global_config = config['Global']
 
         # build post process

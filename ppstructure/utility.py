@@ -15,8 +15,11 @@
 import ast
 from PIL import Image
 import numpy as np
-from tools.infer.utility import draw_ocr_box_txt, str2bool, init_args as infer_args
 
+try:
+    from tools.infer.utility import draw_ocr_box_txt, str2bool, init_args as infer_args
+except:
+    from paddleocr.tools.infer.utility import draw_ocr_box_txt, str2bool, init_args as infer_args
 
 def init_args():
     parser = infer_args()

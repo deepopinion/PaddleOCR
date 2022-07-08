@@ -27,7 +27,11 @@ import time
 import traceback
 import paddle
 
-import tools.infer.utility as utility
+try:
+    import tools.infer.utility as utility
+except:
+    import paddleocr.tools.infer.utility as utility
+
 from ppocr.postprocess import build_post_process
 from ppocr.utils.logging import get_logger
 from ppocr.utils.utility import get_image_file_list, check_and_read_gif
@@ -235,7 +239,7 @@ class TextRecognizer(object):
             resize_w = min(imgW_max, resize_w)
         resized_image = cv2.resize(img, (resize_w, imgH))
         resized_image = resized_image.astype('float32')
-        # norm 
+        # norm
         if image_shape[0] == 1:
             resized_image = resized_image / 255
             resized_image = resized_image[np.newaxis, :]
