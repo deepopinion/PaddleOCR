@@ -26,8 +26,12 @@ import cv2
 import copy
 import numpy as np
 import time
-import tools.infer.predict_rec as predict_rec
-import tools.infer.predict_det as predict_det
+try:
+    import tools.infer.predict_rec as predict_rec
+    import tools.infer.predict_det as predict_det
+except:
+    import paddleocr.tools.infer.predict_rec as predict_rec
+    import paddleocr.tools.infer.predict_det as predict_det
 from ppocr.utils.utility import get_image_file_list, check_and_read_gif
 from ppocr.utils.logging import get_logger
 from ppstructure.table.matcher import distance, compute_iou
