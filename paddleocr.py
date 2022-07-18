@@ -27,14 +27,14 @@ import logging
 import numpy as np
 from pathlib import Path
 
-#try:
-tools = importlib.import_module('.', 'tools')
-from tools.infer import predict_system
-from tools.infer.utility import draw_ocr, str2bool, check_gpu
-#except:
-#    tools = importlib.import_module('.', 'paddleocr.tools')
-#    from paddleocr.tools.infer import predict_system
-#    from paddleocr.tools.infer.utility import draw_ocr, str2bool, check_gpu
+try:
+    tools = importlib.import_module('.', 'tools')
+    from tools.infer import predict_system
+    from tools.infer.utility import draw_ocr, str2bool, check_gpu
+except:
+   tools = importlib.import_module('.', 'paddleocr.tools')
+   from paddleocr.tools.infer import predict_system
+   from paddleocr.tools.infer.utility import draw_ocr, str2bool, check_gpu
 
 ppocr = importlib.import_module('.', 'ppocr')
 ppstructure = importlib.import_module('.', 'ppstructure')

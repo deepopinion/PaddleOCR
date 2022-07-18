@@ -28,16 +28,16 @@ import json
 import time
 import logging
 from PIL import Image
-#try:
-import tools.infer.utility as utility
-import tools.infer.predict_rec as predict_rec
-import tools.infer.predict_det as predict_det
-import tools.infer.predict_cls as predict_cls
-#except:
-#    import paddleocr.tools.infer.utility as utility
-#    import paddleocr.tools.infer.predict_rec as predict_rec
-#    import paddleocr.tools.infer.predict_det as predict_det
-#    import paddleocr.tools.infer.predict_cls as predict_cls
+try:
+    import tools.infer.utility as utility
+    import tools.infer.predict_rec as predict_rec
+    import tools.infer.predict_det as predict_det
+    import tools.infer.predict_cls as predict_cls
+except:
+   import paddleocr.tools.infer.utility as utility
+   import paddleocr.tools.infer.predict_rec as predict_rec
+   import paddleocr.tools.infer.predict_det as predict_det
+   import paddleocr.tools.infer.predict_cls as predict_cls
 
 from ppocr.utils.utility import get_image_file_list, check_and_read_gif
 from ppocr.utils.logging import get_logger
