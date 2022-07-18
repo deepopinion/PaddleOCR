@@ -1,3 +1,19 @@
+This fork solves the dependency error 
+`no module named 'tools.infer'` and enables an installation 
+together with `detectron2`.
+
+# Install from this fork
+
+To install PaddleOCR from this repo, run
+
+```bash
+curl https://raw.githubusercontent.com/deepopinion/PaddleOCR/release/2.5/requirements.txt > paddle-requirements.txt
+pip install -r paddle-requirements.txt
+rm  paddle-requirements.txt
+pip install git+https://github.com/deepopinion/PaddleOCR
+```
+
+# Original Readme
 English | [简体中文](README_ch.md)
 
 <p align="center">
