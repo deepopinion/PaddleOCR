@@ -31,7 +31,9 @@ try:
     tools = importlib.import_module('.', 'tools')
     from tools.infer import predict_system
     from tools.infer.utility import draw_ocr, str2bool, check_gpu
-except:
+except Exception as e:
+    print("(Warning) Original import failed")
+    print(e)
     tools = importlib.import_module('.', 'paddleocr.tools')
     from paddleocr.tools.infer import predict_system
     from paddleocr.tools.infer.utility import draw_ocr, str2bool, check_gpu
