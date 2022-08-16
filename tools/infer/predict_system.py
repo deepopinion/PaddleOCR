@@ -46,6 +46,8 @@ try:
 except:
     from paddleocr.tools.infer.utility import draw_ocr_box_txt, get_rotate_crop_image
 
+import yaml
+from tools.infer_det_return import main as det_main
 logger = get_logger()
 
 
@@ -55,6 +57,10 @@ class TextSystem(object):
             logger.setLevel(logging.INFO)
 
         self.text_detector = predict_det.TextDetector(args)
+        # TODO remove this hacky config file thing
+        with open("infer_hack_config.yml") as f:
+            config = yaml.load(f, yaml.SafeLoader)
+        self.text_detector = lambda img: (det_main(config, img), None)
         self.text_recognizer = predict_rec.TextRecognizer(args)
         self.use_angle_cls = args.use_angle_cls
         self.drop_score = args.drop_score
