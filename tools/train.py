@@ -119,8 +119,8 @@ def main(config, device, logger, vdl_writer):
             config['Loss']['ignore_index'] = char_num - 1
 
     model = build_model(config['Architecture'])
-    # freeze backbone and neck params, only train head
-    for param in model.backbone.parameters() + model.neck.parameters():
+    # freeze backbone params, only train head
+    for param in model.backbone.parameters():
         param.trainable = False
 
     if config['Global']['distributed']:
