@@ -58,8 +58,9 @@ class TextSystem(object):
 
         self.text_detector = predict_det.TextDetector(args)
         # TODO remove this hacky config file thing
-        with open("infer_hack_config.yml") as f:
+        with open(os.path.join(os.path.dirname(__file__), "infer_hack_config.yml")) as f:
             config = yaml.load(f, yaml.SafeLoader)
+            config['Global']['pretrained_model'] = os.path.expanduser(config['Global'].get('pretrained_model'))
         self.text_detector = lambda img: (det_main(config, img), None)
         self.text_recognizer = predict_rec.TextRecognizer(args)
         self.use_angle_cls = args.use_angle_cls
